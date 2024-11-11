@@ -1,76 +1,92 @@
 import datetime
-from google.oauth2 import service_account
+import os
+from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
+from google.auth.transport.requests import Request
+import pickle
 
-# Setting Google Calendar API
+# Define the scope for Google Calendar API access
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-SERVICE_ACCOUNT_FILE = 'sources/credentials.json'
-
-# Load credentials and initialize the Google Calendar API service
-credentials = service_account.Credentials.from_service_account_file(
-    SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-service = build('calendar', 'v3', credentials=credentials)
-
 
 def create_task(name, description, time_of_day, start_date, time_zone):
     """
     Creates a series of tasks in Google Calendar based on user-defined intervals.
 
-    :param name: Task name (str)
-    :param description: Task description (str)
-    :param time_of_day: Time of day for the task in 'HH:MM' format (str)
-    :param start_date: Start date of the task in 'YYYY-MM-DD' format (str)
-    :param time_zone: Time zone for the events (str), e.g., 'America/New_York'
+    :param name: Task name (string)
+    :param description: Task description (string)
+    :param time_of_day: Time of the task (string, format 'HH:MM')
+    :param start_date: Start date of the task series (string, format 'YYYY-MM-DD')
+    :param time_zone: Time zone for the events (string, e.g., 'Europe/Berlin')
     """
-    # Parse start_date and time_of_day into a datetime object
+    # Convert date and time to a datetime object
     task_time = datetime.datetime.strptime(f"{start_date} {time_of_day}", '%Y-%m-%d %H:%M')
 
-    # Prompt user for the number of intervals (task occurrences) they want
+    # Get the number of intervals from the user
     number_of_intervals = int(input("How many occurrences are required: "))
 
-    # Collect intervals from the user, in days, for each occurrence
-    intervals = []
-    for i in range(number_of_intervals):
-        interval = int(input(f"Provide interval {i + 1} (in days) for your task: "))
-        intervals.append(interval)
+    # Get each interval from the user
+    intervals = [int(input(f"Provide interval {i + 1} (in days) for your task: ")) for i in range(number_of_intervals)]
 
-    # Create and insert an event into Google Calendar for each interval
+    # Create a task occurrence for each date according to user-defined intervals
     for interval in intervals:
+        # Calculate the date for each occurrence based on the interval
         task_date = task_time + datetime.timedelta(days=interval)
         event = {
             'summary': name,
             'description': description,
             'start': {
                 'dateTime': task_date.isoformat(),
-                'timeZone': time_zone,  # Set to specified time zone
+                'timeZone': time_zone,
             },
             'end': {
                 'dateTime': (task_date + datetime.timedelta(hours=1)).isoformat(),
                 'timeZone': time_zone,
             },
-            'visibility': 'default',  # Make the event visible to the user
-            'guestsCanSeeOtherGuests': True,  # Allow guests to see each other
             'reminders': {
                 'useDefault': False,
                 'overrides': [
                     {'method': 'email', 'minutes': 24 * 60},  # Reminder 1 day in advance
-                    {'method': 'popup', 'minutes': 30},  # Reminder 30 minutes in advance
+                    {'method': 'popup', 'minutes': 30},       # Reminder 30 minutes in advance
                 ],
             },
         }
 
-        # Insert the event into the Google Calendar
+        # Insert the event into Google Calendar
         event_result = service.events().insert(calendarId='primary', body=event).execute()
         print(f"Task created: {event_result.get('htmlLink')}")
 
+# Authentication and credentials loading
+creds = None
+# Check if a token file exists (used for storing access and refresh tokens)
+if os.path.exists('token.pickle'):
+    with open('token.pickle', 'rb') as token:
+        creds = pickle.load(token)
 
+# If no valid credentials are available, prompt the user to log in
+if not creds or not creds.valid:
+    if creds and creds.expired and creds.refresh_token:
+        # Refresh expired credentials if a refresh token is available
+        creds.refresh(Request())
+    else:
+        # Perform OAuth 2.0 login flow if no credentials are available
+        flow = InstalledAppFlow.from_client_secrets_file(
+            'sources/credentials.json', SCOPES)
+        creds = flow.run_local_server(port=0)
+    # Save the credentials for future runs
+    with open('token.pickle', 'wb') as token:
+        pickle.dump(creds, token)
+
+# Create the Google Calendar API service
+service = build('calendar', 'v3', credentials=creds)
+
+# Main script execution
 if __name__ == "__main__":
-    # Collect user input for task details
+    # Prompt the user for task details
     name = input("Enter task name: ")
     description = input("Enter task description: ")
     time_of_day = input("Enter time of day (HH:MM): ")
     start_date = input("Enter start date (YYYY-MM-DD): ")
-    time_zone = input("Enter time zone (e.g., 'America/New_York'): ")
+    time_zone = input("Enter time zone (e.g., 'Europe/Berlin'): ")
 
-    # Call create_task with user-provided input
+    # Create the task in Google Calendar with the provided details
     create_task(name, description, time_of_day, start_date, time_zone)
