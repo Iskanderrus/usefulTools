@@ -1,1 +1,4 @@
 /venv/
+/google_calendar/token.pickle
+.idea/
+/google_calendar/sources/
