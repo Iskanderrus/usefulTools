@@ -24,20 +24,22 @@ COLOR_OPTIONS = {
     "11": "Tomato"
 }
 
-def create_task(name, description, time_of_day, start_date, time_zone, intervals, color_id):
-    """
-    Creates a series of tasks in Google Calendar based on specified intervals.
 
-    :param name: Task name (string)
-    :param description: Task description (string)
-    :param time_of_day: Time of the task (string, format 'HH:MM')
-    :param start_date: Start date of the task series (string, format 'YYYY-MM-DD')
-    :param time_zone: Time zone for the events (string, e.g., 'Europe/Berlin')
-    :param intervals: List of intervals in days for each task occurrence
-    :param color_id: Color ID for the event (string, 1-11)
+def create_task(service, name, description, time_of_day, start_date, time_zone, intervals, color_id):
+    """
+    Creates a series of tasks in Google Calendar based on specified intervals using batch requests.
     """
     # Convert date and time to a datetime object
     task_time = datetime.datetime.strptime(f"{start_date} {time_of_day}", '%Y-%m-%d %H:%M')
+
+    # Initialize batch request
+    batch = service.new_batch_http_request()
+
+    def callback(request_id, response, exception):
+        if exception:
+            print(f"An error occurred: {exception}")
+        else:
+            print(f"Task occurrence created: {response.get('htmlLink')}")
 
     for i, interval in enumerate(intervals):
         # Calculate the date for each occurrence based on the interval
@@ -63,9 +65,12 @@ def create_task(name, description, time_of_day, start_date, time_zone, intervals
             },
         }
 
-        # Insert the event into Google Calendar
-        event_result = service.events().insert(calendarId='primary', body=event).execute()
-        print(f"Task occurrence {i + 1} created: {event_result.get('htmlLink')}")
+        # Add each event insert request to the batch
+        batch.add(service.events().insert(calendarId='primary', body=event), callback=callback)
+
+    # Execute all events in one batch request
+    batch.execute()
+
 
 # Authentication and credentials loading
 creds = None
@@ -102,12 +107,14 @@ if __name__ == "__main__":
     print(f"Using detected timezone: {time_zone}")
 
     # Ask if the user wants to use default intervals or custom ones
-    use_default_intervals = input("Do you want to use the default intervals (3, 7, 14, 21, 35 days)? (y/n): ").strip().lower()
+    use_default_intervals = input(
+        "Do you want to use the default intervals (3, 7, 14, 21, 35 days)? (y/n): ").strip().lower()
     if use_default_intervals == 'y':
         intervals = DEFAULT_INTERVALS
     else:
         number_of_intervals = int(input("How many occurrences are required: "))
-        intervals = [int(input(f"Provide interval {i + 1} (in days) for your task: ")) for i in range(number_of_intervals)]
+        intervals = [int(input(f"Provide interval {i + 1} (in days) for your task: ")) for i in
+                     range(number_of_intervals)]
 
     # Display color options and get the user's choice
     print("\nAvailable colors for the event:")
@@ -119,4 +126,4 @@ if __name__ == "__main__":
         color_id = "1"
 
     # Create the task in Google Calendar with the provided details
-    create_task(name, description, time_of_day, start_date, time_zone, intervals, color_id)
+    create_task(service, name, description, time_of_day, start_date, time_zone, intervals, color_id)
