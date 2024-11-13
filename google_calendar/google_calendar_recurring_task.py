@@ -42,17 +42,18 @@ def create_task(service, name, description, time_of_day, start_date, time_zone, 
             print(f"Task occurrence created: {response.get('htmlLink')}")
 
     for i, interval in enumerate(intervals):
-        # Calculate the date for each occurrence based on the interval
-        task_date = task_time + datetime.timedelta(days=interval)
+        # Calculate the date for each occurrence based on the last task_date
+        task_time += datetime.timedelta(days=interval)
+
         event = {
             'summary': f"{name} - Occurrence {i + 1}",
             'description': description,
             'start': {
-                'dateTime': task_date.isoformat(),
+                'dateTime': task_time.isoformat(),
                 'timeZone': time_zone,
             },
             'end': {
-                'dateTime': (task_date + datetime.timedelta(hours=1)).isoformat(),
+                'dateTime': (task_time + datetime.timedelta(hours=1)).isoformat(),
                 'timeZone': time_zone,
             },
             'colorId': color_id,
