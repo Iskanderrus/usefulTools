@@ -1,6 +1,6 @@
 /venv/
 /google_calendar/token.pickle
-.idea/
+.idea/*
 /google_calendar/sources/
 misc.xml
 usefulTools.iml
