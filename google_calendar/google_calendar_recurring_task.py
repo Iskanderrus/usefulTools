@@ -24,6 +24,9 @@ COLOR_OPTIONS = {
     "11": "Tomato"
 }
 
+# Get the absolute path to the credentials file
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CREDENTIALS_PATH = os.path.join(BASE_DIR, 'sources', 'credentials.json')
 
 def create_task(service, name, description, time_of_day, start_date, time_zone, intervals, color_id):
     """
@@ -84,7 +87,7 @@ if not creds or not creds.valid:
         creds.refresh(Request())
     else:
         flow = InstalledAppFlow.from_client_secrets_file(
-            './sources/credentials.json', SCOPES)
+            CREDENTIALS_PATH, SCOPES)
         creds = flow.run_local_server(port=0)
     with open('token.pickle', 'wb') as token:
         pickle.dump(creds, token)
