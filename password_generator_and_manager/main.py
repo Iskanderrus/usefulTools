@@ -12,7 +12,7 @@ import pyperclip
 from PIL import Image, ImageTk
 
 FONT_NAME = 'TkMenuFont'
-DATA_FILE = Path('../../../Documents/password_manager_log.json')
+DATA_FILE = Path('./password_manager_log.json')
 
 def ensure_file_exists():
     if not DATA_FILE.exists():
