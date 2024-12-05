@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5c3337d1-d3e5-414c-9c61-2ee0ffdff675" name="Changes" comment="cleanup">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/usefulTools.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/usefulTools.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/password_generator_and_manager/images/bg_image.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/password_generator_and_manager/images/exit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/password_generator_and_manager/images/logo_image.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/password_generator_and_manager/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/google_calendar/google_calendar_recurring_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/google_calendar/google_calendar_recurring_task.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +40,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -52,17 +54,20 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.google_calendar_recurring_task.executor": "Run",
+    "Python.main (1).executor": "Run",
     "Python.main.executor": "Run",
     "Python.png_size_reducer.executor": "Run",
+    "Python.test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/alex/PycharmProjects/usefulTools/google_calendar",
+    "last_opened_file_path": "/home/alex/PycharmProjects/usefulTools",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/google_calendar" />
       <recent name="$PROJECT_DIR$/sources" />
     </key>
@@ -72,7 +77,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.google_calendar_recurring_task">
+  <component name="RunManager" selected="Python.main (1)">
     <configuration name="google_calendar_recurring_task" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="usefulTools" />
       <option name="ENV_FILES" value="" />
@@ -87,6 +92,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/google_calendar/google_calendar_recurring_task.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="usefulTools" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/password_generator_and_manager" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/password_generator_and_manager/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -117,8 +144,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="usefulTools" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main (1)" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.google_calendar_recurring_task" />
         <item itemvalue="Python.main" />
       </list>
@@ -220,7 +271,23 @@
       <option name="project" value="LOCAL" />
       <updated>1732835928546</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="improved credentials retrieval">
+      <option name="closed" value="true" />
+      <created>1733349464996</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1733349464997</updated>
+    </task>
+    <task id="LOCAL-00012" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1733349489086</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1733349489086</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -231,6 +298,7 @@
     <MESSAGE value="final version of google calendar event recurring creating tool" />
     <MESSAGE value="process events in one batch to improve efficiency" />
     <MESSAGE value="enhance intervals logic" />
+    <MESSAGE value="improved credentials retrieval" />
     <MESSAGE value="cleanup" />
     <option name="LAST_COMMIT_MESSAGE" value="cleanup" />
   </component>
