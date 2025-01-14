@@ -6,3 +6,5 @@ misc.xml
 usefulTools.iml
 workspace.xml
 /token.pickle
+/contact_qr_code_generator/data_for_qr_codes.xlsx
+/contact_qr_code_generator/qr_codes/

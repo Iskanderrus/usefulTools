@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c3337d1-d3e5-414c-9c61-2ee0ffdff675" name="Changes" comment="cleanup">
-      <change afterPath="$PROJECT_DIR$/password_generator_and_manager/images/bg_image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/password_generator_and_manager/images/exit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/password_generator_and_manager/images/logo_image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/password_generator_and_manager/main.py" afterDir="false" />
+    <list default="true" id="5c3337d1-d3e5-414c-9c61-2ee0ffdff675" name="Changes" comment="QR code generator added">
+      <change afterPath="$PROJECT_DIR$/contact_qr_code_generator/contactQRCodeGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/usefulTools.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/usefulTools.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
@@ -53,6 +52,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.contactQRCodeGenerator.executor": "Run",
     "Python.google_calendar_recurring_task.executor": "Run",
     "Python.main (1).executor": "Run",
     "Python.main.executor": "Run",
@@ -72,12 +72,35 @@
       <recent name="$PROJECT_DIR$/sources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/password_generator_and_manager" />
       <recent name="$PROJECT_DIR$/google_calendar" />
       <recent name="$PROJECT_DIR$/sources" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main (1)">
+  <component name="RunManager" selected="Python.contactQRCodeGenerator">
+    <configuration name="contactQRCodeGenerator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="usefulTools" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/contact_qr_code_generator" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/contact_qr_code_generator/contactQRCodeGenerator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="google_calendar_recurring_task" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="usefulTools" />
       <option name="ENV_FILES" value="" />
@@ -168,9 +191,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.contactQRCodeGenerator" />
+        <item itemvalue="Python.google_calendar_recurring_task" />
         <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.google_calendar_recurring_task" />
         <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
@@ -287,7 +311,31 @@
       <option name="project" value="LOCAL" />
       <updated>1733349489086</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="password generator and manager">
+      <option name="closed" value="true" />
+      <created>1733425638472</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1733425638472</updated>
+    </task>
+    <task id="LOCAL-00014" summary="read.me added">
+      <option name="closed" value="true" />
+      <created>1733426028563</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1733426028563</updated>
+    </task>
+    <task id="LOCAL-00015" summary="QR code generator added">
+      <option name="closed" value="true" />
+      <created>1736883956605</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1736883956605</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -300,6 +348,9 @@
     <MESSAGE value="enhance intervals logic" />
     <MESSAGE value="improved credentials retrieval" />
     <MESSAGE value="cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleanup" />
+    <MESSAGE value="password generator and manager" />
+    <MESSAGE value="read.me added" />
+    <MESSAGE value="QR code generator added" />
+    <option name="LAST_COMMIT_MESSAGE" value="QR code generator added" />
   </component>
 </project>
